@@ -15,7 +15,7 @@
     align-items: center;
     text-align: center;
 } 
-  
+
 .card {
     background-color: rgba(240, 231, 231, 0.767);
     width: 40%;
@@ -95,3 +95,5 @@
         height: 30%;
     }
 }
+
+
