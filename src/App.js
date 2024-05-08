@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
 
 const App = () => {
-    const [advice, setAdvice] = useState('');
+  const [joke, setJoke] = useState("");
 
-    useEffect(() => {
-        fetchQuote();
-    }, []);
+  useEffect(() => {
+    fetchJoke();
+  }, []);
 
-    const fetchQuote = () => {
-        axios.get('https://api.adviceslip.com/advice')
-            .then((response) => {
-                const { advice } = response.data.slip;
-                setAdvice(advice);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+  const fetchJoke = () => {
+    axios
+      .get("https://api.chucknorris.io/jokes/random")
+      .then((response) => {
+        const { value } = response.data;
+        setJoke(value);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    return (
-        <div className='app'>
-            <div className='card'>
-                <h1 className='heading'>{advice}</h1>
-                <button className='button' onClick={fetchQuote}>More Advice</button>
-            </div>
-        </div>
-    );
+  return (
+    <div className="app">
+      <div className="card">
+        <h1 className="heading">{joke}</h1>
+        <button className="button" onClick={fetchJoke}>
+          More Jokes
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default App;
